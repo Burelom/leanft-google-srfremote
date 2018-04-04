@@ -24,22 +24,22 @@ public class LeanFtTest extends UnitTestClassBase {
     public static void setUpBeforeClass() throws Exception {
         instance = new LeanFtTest();
         globalSetup(LeanFtTest.class);
-        browser = BrowserFactory.launch(BrowserType.CHROME);
+
     }
 
     @AfterClass
     public static void tearDownAfterClass() throws Exception {
-        browser.close();
         globalTearDown();
     }
 
     @Before
     public void setUp() throws Exception {
+        browser = BrowserFactory.launch(BrowserType.CHROME);
     }
 
     @After
     public void tearDown() throws Exception {
-
+        browser.close();
     }
 
     @Test
