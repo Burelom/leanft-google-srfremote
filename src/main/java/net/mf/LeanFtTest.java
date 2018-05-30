@@ -39,12 +39,26 @@ public class LeanFtTest extends UnitTestClassBase {
 
     @Before
     public void setUp() throws Exception {
-        browser = BrowserFactory.launch(BrowserType.CHROME);
+        //browser = BrowserFactory.launch(BrowserType.CHROME);
+        BrowserDescription bd = new BrowserDescription();
+
+        bd.setType(BrowserType.CHROME); //or: bd.set("type", BrowserType.INTERNET_EXPLORER) or: bd.set("type", "FIREFOX")
+
+        bd.set("version", "66");
+
+        bd.set("osType", "Windows");
+
+        bd.set("osVersion", "10");
+
+        bd.set("testName", "Live from IntelliJ!");
+
+        browser = SrfLab.launchBrowser(bd);
     }
 
     @After
     public void tearDown() throws Exception {
-        browser.close();
+        //browser.close();
+        SrfLab.releaseEnvironment(browser);
     }
 
     @Test
